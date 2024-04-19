@@ -1,22 +1,39 @@
 import { useCounterStore } from '../store';
+import fish from "../../public/fish-svgrepo-com.svg"
+import capy from "../../public/capybara-svgrepo-com.svg"
+import dna from "../../public/dna-svgrepo-com.svg"
+
+const images = [null, capy, fish, dna]
 
 function Buildings() {
-  const { buyBuilding, buildings } = useCounterStore(); 
+  const { buyBuilding, buildings } = useCounterStore();
 
+    const resetGame = () => {
+      localStorage.clear()
+      window.location.reload();
+    }
   return (
-    <>
-      <div>
-        <h2>Available Buildings</h2>
+    <div className="bg-white rounded-lg flex flex-col justify-center items-center ml-4">
+      <div className="w-64 md:w-80">
         {Object.entries(buildings).map(([buildingId, buildingData]) => (
           <div key={buildingId}>
-            <p>
-              <b>{buildingData.name}</b> - Cost: {buildingData.cost} clicks, CPS: {buildingData.cps}
-            </p>
-            <button onClick={() => buyBuilding(buildingId)}>Buy</button>
+          <div className="flex flex-row mt-4 mx-4 space-x-8">
+        <img src={images[buildingId]} alt="un bebe chiguire" className="h-auto w-20 rounded-lg" />
+        <div>
+          <p className="text-xl">{buildingData.name}</p>
+          <p>tienes {Number(buildingData.amount)}</p>
+          <button onClick={() => { buyBuilding(buildingId)}} className="bg-yellow-100 p-2 rounded-lg hover:border">
+            <span>costo </span>
+              <span>{buildingData.cost}</span>
+          </button>
+        </div>
+
+      </div>
+      <hr className="h-px mt-4 bg-gray-200 border-0 dark:bg-gray-700" />
           </div>
         ))}
       </div>
-    </>
+    </div>
   )
 }
 
