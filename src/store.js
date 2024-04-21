@@ -12,22 +12,23 @@ export const useCounterStore = create(persist((set) => (
     // global
     count: 0,
     cps: 0,
+    window: 1,
 
     buildings: {
       1: {
-        name: 'Baby Clicker',
-        cost: 15,
+        name: 'Baby Chiguire',
+        cost: 10,
         cps: 0.1,
         amount: 0,
       },
       2: {
-        name: 'Small Farm',
+        name: 'Comida',
         cost: 100,
         cps: 1,
         amount: 0,
       },
       3: {
-        name: 'Auto Clicker',
+        name: 'Mutacion genetica',
         cost: 1000,
         cps: 10,
         amount: 0,
@@ -65,6 +66,10 @@ export const useCounterStore = create(persist((set) => (
     },
 
     addCps: () => set((state) => ({ count: state.count + state.cps })),
+
+    changeWindow: (number) => set((state) => ({window: number}))
+
+    ////
   }),
   {
     name: 'gameData',
