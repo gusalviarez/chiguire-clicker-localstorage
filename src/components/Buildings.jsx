@@ -3,32 +3,28 @@ import fish from "/fish-svgrepo-com.svg"
 import capy from "/capybara-svgrepo-com.svg"
 import dna from "/dna-svgrepo-com.svg"
 
-const images = [null, capy, fish, dna]
+const images = [null, capy, fish, dna, capy, capy, capy, capy, capy, capy, capy, capy, capy]
 
 function Buildings() {
   const { buyBuilding, buildings } = useCounterStore();
 
-
   return (
-    <div className="bg-white rounded-lg flex flex-col justify-center items-center" >
-      <div className="w-64 md:w-80 border-2 rounded-lg">
-        {Object.entries(buildings).map(([buildingId, buildingData]) => (
-          <div key={buildingId}>
-            <div className="flex flex-row mt-4 mx-4 space-x-8">
-              <img src={images[buildingId]} alt="un bebe chiguire" className="h-auto w-20 rounded-lg" />
-              <div>
-                <p className="text-xl">{buildingData.name}</p>
-                <p>tienes {Number(buildingData.amount)}</p>
-                <button onClick={() => { buyBuilding(buildingId) }} className="bg-yellow-100 p-2 rounded-lg hover:border">
-                  <span>costo </span>
-                  <span>{buildingData.cost}</span>
-                </button>
-              </div>
-
-            </div>
-            <hr className="h-px mt-4 bg-gray-200 border-0 dark:bg-gray-700" />
+    <div id="square" className="bg-white w-64 md:w-80 border-2 rounded-lg max-h-96 flex flex-col justify-center items-center" >
+      <div id="square-children">
+      {Object.entries(buildings).map(([buildingId, buildingData]) => (
+        <div key={buildingId} className="flex flex-row justify-center items-center w-80 mx-4 space-y-4 space-x-8">
+          <img src={images[buildingId]} alt="un bebe chiguire" className="h-auto w-16" />
+          <div className="space-y-1 flex flex-col items-center w-32">
+            <p className="text-lg">{buildingData.name}</p>
+            <span>tienes {Number(buildingData.amount)}</span>
+            <button onClick={() => { buyBuilding(buildingId) }} className="text-sm bg-yellow-100 px-2 rounded-lg ml-2">
+              <span className="text-sm">costo </span>
+              <span className="text-sm">{buildingData.cost}</span>
+            </button>
           </div>
-        ))}
+
+        </div>
+      ))}
       </div>
     </div>
   )

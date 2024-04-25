@@ -15,7 +15,6 @@ export const Home = () => {
         <Nav />
           {(window == 1) ? <Buildings /> : <Mutation />}
       </div>
-
     </div>
   )
 }

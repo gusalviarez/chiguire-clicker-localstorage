@@ -5,11 +5,33 @@
 
 body {
   font-family: "Platypi", sans-serif;
+   user-select: none;
+   -moz-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
 }
 
-#clicker {
-  background-image: url("../public/pngwing.com.png");
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
 }
 
+#square {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: gray white;
+}
 
+#square-children {
 
+  position: relative;
+  margin-top: 46rem;
+}
+
+#square-children:last-child {
+  padding-bottom: 2rem;
+}
