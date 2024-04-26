@@ -6,15 +6,22 @@ import Mutation from "./Mutation"
 
 export const Home = () => {
 
-  const { window } = useCounterStore();
+  const { tab } = useCounterStore();
+  
+  const reset = () => {
+    localStorage.clear()
+    window.location.reload()
+  }
 
   return (
     <div className="flex flex-row-reverse md:flex-row md:space-x-40 justify-center items-center h-screen bg-yellow-100">
       <Clicker />
       <div className="space-y-4">
         <Nav />
-          {(window == 1) ? <Buildings /> : <Mutation />}
+          {(tab == 1) ? <Buildings /> : <Mutation />}
+        <button onClick={reset} className="bg-red-500 text-white p-2 rounded-lg">Reset</button>
       </div>
+      
     </div>
   )
 }

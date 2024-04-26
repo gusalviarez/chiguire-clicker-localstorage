@@ -7,9 +7,12 @@ export const useCounterStore = create(persist((set) => (
     // ------------- init values -------------- //
 
     // global
-    count: 0,
+    count: 100000,
+    click: 1,
     cps: 0,
-    window: 1,
+    tab: 1,
+    percentalBoost: 1,
+    clickBoost: 0,
 
     buildings: {
       1: {
@@ -73,75 +76,37 @@ export const useCounterStore = create(persist((set) => (
         amount: 0,
       },
     },
-    
-    Mutations: {
+
+    mutations: {
 
       1: {
-        name: "mutacion 1",
+        name: "click doble",
         cost: 100,
+        amount: 0,
       },
       2: {
-        name: "mutacion 2",
+        name: "30% extra cps",
         cost: 200,
+        amount: 0,
       },
       3: {
-        name: "mutacion 3",
-        cost: 300,
+        name: "click x100",
+        cost: 1000,
+        amount: 0,
       },
-      4 : {
-        name: "mutacion 4",
-        cost: 400,
+      4: {
+        name: "tus clicks ahora escalan un 5% de tu cps",
+        cost: 10000,
+        amount: 0,
       },
       5: {
-        name: "mutacion 5",
-        cost: 500,
+        name: "click x1000",
+        cost: 100000,
+        amount: 0,
       },
-      6: {
-        name: "mutacion 6",
-        cost: 1200,
-      },
-      7: {
-        name: "mutacion 7",
-        cost: 1200,
-      },
-      8: {
-        name: "mutacion 8",
-        cost: 1300,
-      },
-      9: {
-        name: "mutacion 9",
-        cost: 1400,
-      },
-      10: {
-        name: "mutacion 10",
-        cost: 1500,
-      },
-      /*
-      11: {
-        name: "mutacion 11",
-        cost: 2100,
-      },
-      12: {
-        name: "mutacion 12",
-        cost: 2200,
-      },
-      13: {
-        name: "mutacion 13",
-        cost: 2300,
-      },
-      14: {
-        name: "mutacion 14",
-        cost: 2400,
-      },
-      15: {
-        name: "mutacion 15",
-        cost: 2500,
-      },
-    */
     },
 
     // -------------- functions ----------------- //
-    addCounter: () => set((state) => ({ count: state.count + 1 })),
 
     buyBuilding: (buildingId) => {
       set((state) => {
@@ -154,13 +119,13 @@ export const useCounterStore = create(persist((set) => (
           // Update building cost and state values
           updatedBuildings[buildingId] = {
             ...building,
-            cost: (building.cost * 1.15).toFixed(2), // Increase cost by 15%
+            cost: (building.cost * 1.15).toFixed(0), // Increase cost by 15%
             amount: building.amount + 1,
           };
 
           return {
             count: state.count - building.cost, // Deduct current cost
-            cps: state.cps + building.cps,
+            cps: state.cps + building.cps * state.percentalBoost,
             buildings: updatedBuildings,
           };
         }
@@ -170,14 +135,78 @@ export const useCounterStore = create(persist((set) => (
       });
     },
 
-    addCps: () => set((state) => ({ count: state.count + state.cps })),
+    buyMutation: (mutationId) => {
+      set((state) => {
+        const mutation = state.mutations[mutationId];
 
-    changeWindow: (number) => set((state) => ({window: number}))
+        // Check if enough clicks and building exists
+        if (state.count >= mutation.cost && mutation) {
+          const updatedMutations = { ...state.mutations }; // Shallow copy
 
+          // Update building cost and state values
+          updatedMutations[mutationId] = {
+            ...mutation,
+            cost: (mutation.cost * 100), // Increase cost by 15%
+            amount: mutation.amount + 1,
+          };
+
+          if (mutationId == 1) {
+            return {
+              // click double
+              click: state.click * 2,
+              count: state.count - mutation.cost, // Deduct current cost
+              mutations: updatedMutations,
+            };
+          } else if (mutationId == 2) {
+                return {
+                  // 30% extra cps
+                  cps: state.cps * 1.3,
+                  percentalBoost: state.percentalBoost + 0.3,
+                  count: state.count - mutation.cost, // Deduct current cost
+                  mutations: updatedMutations,
+                };
+          } else if (mutationId == 3) {
+            return {
+              // click x100
+              click: state.click * 100,
+              count: state.count - mutation.cost, // Deduct current cost
+              mutations: updatedMutations,
+            };
+          } else if (mutationId == 4) {
+              // tus clicks ahora escalan un 5% de tu cps
+            return {
+              clickBoost: state.clickBoost + 0.05,
+              count: state.count - mutation.cost, // Deduct current cost
+              mutations: updatedMutations,
+            };
+          } else if (mutationId == 5) {
+              // click x1000
+            return {
+              click: state.click * 1000,
+              count: state.count - mutation.cost, // Deduct current cost
+              mutations: updatedMutations,
+            };
+          }
+
+
+        }
+
+        // No change if insufficient clicks or building not found
+        return state;
+      });
+    },
+
+    addCps: () => set((state) => ({
+      count: state.count + state.cps,
+    })),
+
+    addCounter: () => set((state) => ({ count: state.count + state.click + (state.cps * state.clickBoost)})),
+
+    changeWindow: (number) => set((state) => ({ tab: number }))
     ////
   }),
   {
     name: 'gameData',
-    storage: createJSONStorage(() => sessionStorage),
+    storage: createJSONStorage(() => localStorage),
   }
 ));

@@ -20,18 +20,27 @@ img {
 }
 
 #square {
+    scrollbar-width: thin;
+    scrollbar-color: gray white;
+}
+
+#square-children:last-child {
+  padding-bottom: 2rem;
+}
+
+#square-mutation {
     overflow-y: scroll;
     overflow-x: hidden;
     scrollbar-width: thin;
     scrollbar-color: gray white;
 }
 
-#square-children {
+#square-mutation-children {
 
   position: relative;
-  margin-top: 46rem;
+  margin-top: 1rem;
 }
 
-#square-children:last-child {
-  padding-bottom: 2rem;
+#square-mutation-children:last-child {
+  padding-bottom: 1rem;
 }
