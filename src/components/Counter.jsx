@@ -1,10 +1,17 @@
 import { useCounterStore } from '../store';
 import capy from "/capybara-svgrepo-com.svg"
 import useClickAnimation from "../hooks/useClickAnimation";
+import useCapyAnimation from "../hooks/useCapyAnimation";
 
 function Clicker() {
   const { count, cps } = useCounterStore();
-  const { number, handleClick, styles} = useClickAnimation();
+  const { clickAnimation, styles, spanRef, number } = useClickAnimation();
+  const { capyRef, capyAnimation } = useCapyAnimation();
+
+  const handleClick = (event) => {
+    capyAnimation()
+    clickAnimation(event)
+  }
 
   return (
     <div className="flex flex-col md:space-y-4 h-screen mx-4 justify-center items-center">
@@ -15,10 +22,10 @@ function Clicker() {
       <p className="text-xl md:text-3xl">{Number.isInteger(cps) ? <span>{cps}</span> : <span>{cps.toFixed(1)}</span>}
         <span> cps</span>
       </p>
-      <img src={capy} className="w-96" onClick={handleClick} />
-      {number && <span style={styles} className="absolute clickEffect text-yellow-400 text-5xl" >+ {number} chiguire</span>}
+      <img ref={capyRef} src={capy} className="w-96" onClick={handleClick} />
+      {number && <span ref={spanRef} style={styles} className="text-yellow-400 text-5xl" >+ {number} chiguire</span>}
     </div>
-  )
+  );
 }
 
 export default Clicker
