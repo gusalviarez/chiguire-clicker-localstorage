@@ -19,7 +19,7 @@ export const Home = () => {
       <div className="space-y-4">
         <Nav />
           {(tab == 1) ? <Buildings /> : <Mutation />}
-        <button onClick={reset} className="bg-red-500 text-white p-2 rounded-lg">Reset</button>
+        <button onClick={reset} className="bg-red-500 ml-64 text-white p-2 rounded-lg">Reset</button>
       </div>
       
     </div>
