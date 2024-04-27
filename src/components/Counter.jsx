@@ -15,8 +15,8 @@ function Clicker() {
   }
 
   return (
-    <div className="flex flex-col md:space-y-4 h-screen mx-4 justify-center items-center">
-      <div className="w-1/2 md:w-96 flex flex-col md:flex-row space-x-6">
+    <div className="flex flex-col space-y-4 h-screen mx-4 justify-center items-center">
+      <div className="w-1/2 md:w-96 flex flex-col items-center justify-center md:flex-row md:space-x-6">
         <span className="text-xl md:text-6xl">Chiguires</span>
         <span className="text-xl md:text-6xl">{Math.floor(count)}</span>
       </div>
