@@ -36,7 +36,7 @@ function Clicker() {
         <span> cps</span>
       </p>
       <img ref={capyRef} src={capy} className="h-auto w-[9rem] md:w-96" onClick={handleClick} />
-      {number && <span ref={spanRef} style={styles} className="text-yellow-700 text-3xl md:text-5xl" >+ {number}</span>}
+      {number && <span ref={spanRef} style={styles} className="text-white text-4xl md:text-5xl" >+ {number}</span>}
     </div>
   );
 }

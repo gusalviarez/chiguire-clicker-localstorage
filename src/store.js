@@ -146,7 +146,7 @@ export const useCounterStore = create(persist((set) => (
           // Update building cost and state values
           updatedMutations[mutationId] = {
             ...mutation,
-            cost: (mutation.cost * 1000), // Increase cost by 15%
+            cost: (mutation.cost * 100), // Increase cost by 15%
             amount: mutation.amount + 1,
           };
 
