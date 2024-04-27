@@ -8,7 +8,7 @@ function Mutation() {
   const { mutations, buyMutation } = useCounterStore();
 ``
   return (
-    <div id="square-mutation" className="bg-white w-64 md:w-80 border-2 rounded-lg h-96">
+    <div id="square-mutation" className="bg-white w-1/2 md:w-80 border-2 rounded-lg h-96">
       <div id="square-mutation-children" className="ml-1 flex flex-col">
         {Object.entries(mutations).map(([mutationId, mutationData]) => (
           <div key={mutationId} className="m-1 h-auto flex items-center justify-center border-2 rounded-lg">
