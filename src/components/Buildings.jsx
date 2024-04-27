@@ -25,9 +25,9 @@ function Buildings() {
     <div id="square" className="overflow-x-hidden overflow-y-scroll bg-white w-full md:w-80 border-2 rounded-lg max-h-96 flex flex-col justify-center items-center" >
       <div id="square-children" className="relative pt-[29rem] md:pt-[46rem]">
       {Object.entries(buildings).map(([buildingId, buildingData]) => (
-        <div key={buildingId} className="flex flex-row justify-center items-center w-80 mx-4 space-y-4 space-x-8">
+        <div key={buildingId} className="flex flex-row justify-center items-center w-80 mx-1 md:mx-4 space-y-4 md:space-x-8 space-x-2">
           <img src={images[buildingId]} alt="un bebe chiguire" className="h-auto w-12 md:w-16" />
-          <div className="space-y-1 flex flex-col items-center md:w-32">
+          <div className="space-y-1 flex flex-col items-center w-20 md:w-32">
             <p className="text-xs md:text-lg">{buildingData.name}</p>
             <span className="text-xs md:text-lg">tienes {Number(buildingData.amount)}</span>
             <button onClick={() => { buyBuilding(buildingId) }} className="bg-yellow-100 px-2 rounded-lg ml-2">

@@ -23,7 +23,7 @@ export const Home = () => {
   return (
     <div className="flex flex-row-reverse md:flex-row md:space-x-40 justify-center items-center md:h-screen h-full bg-yellow-100">
       <Clicker />
-      <div className="space-y-4 flex flex-col justify-center items-center w-[15rem] md:w-60 ml-12">
+      <div className="space-y-4 flex flex-col justify-center items-center w-[13rem] md:w-60 ml-12">
         <Nav />
           {(tab == 1) ? <Buildings /> : <Mutation />}
         <button onClick={reset} className="bg-red-500 text-white p-1 rounded-lg">Reset</button>
