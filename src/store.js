@@ -7,7 +7,7 @@ export const useCounterStore = create(persist((set) => (
     // ------------- init values -------------- //
 
     // global
-    count: 100000,
+    count: 0,
     click: 1,
     cps: 0,
     tab: 1,
@@ -59,7 +59,7 @@ export const useCounterStore = create(persist((set) => (
       },
       8: {
         name: 'edificio 8',
-        cost: 330000000,
+        cost: 3300000000,
         cps: 44000,
         amount: 0,
       },
@@ -86,22 +86,22 @@ export const useCounterStore = create(persist((set) => (
       },
       2: {
         name: "30% extra cps",
-        cost: 200,
+        cost: 1000,
         amount: 0,
       },
       3: {
         name: "click x100",
-        cost: 1000,
+        cost: 1000000,
         amount: 0,
       },
       4: {
         name: "tus clicks ahora escalan un 5% de tu cps",
-        cost: 10000,
+        cost: 100000000,
         amount: 0,
       },
       5: {
         name: "click x1000",
-        cost: 100000,
+        cost: 10000000000,
         amount: 0,
       },
     },
@@ -146,7 +146,7 @@ export const useCounterStore = create(persist((set) => (
           // Update building cost and state values
           updatedMutations[mutationId] = {
             ...mutation,
-            cost: (mutation.cost * 100), // Increase cost by 15%
+            cost: (mutation.cost * 1000), // Increase cost by 15%
             amount: mutation.amount + 1,
           };
 

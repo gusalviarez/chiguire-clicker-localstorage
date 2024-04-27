@@ -3,6 +3,18 @@ import { useCounterStore } from '../store';
 
 const images = [null, null, null, null,null,null,null,null,null,null,null,null,null,null,null,null,null]
 
+const convertNumber = (number) => {
+
+    if (number < 1000000) {
+      return number
+    }
+     else if (number >= 1000000 && number < 1000000000) {
+      return `${(number / 1000000).toFixed(1)}M`
+    } else if (number >= 1000000000) {
+      return `${(number / 1000000000).toFixed(1)}B`
+    }
+  }
+
 function Mutation() {
 
   const { mutations, buyMutation } = useCounterStore();
@@ -14,7 +26,7 @@ function Mutation() {
           <div key={mutationId} className="w-2/3 m-1 h-auto w-full flex items-center justify-center border-2 rounded-lg">
             <button onClick={() => {buyMutation(mutationId)}}>
               <p className="text-xs">{mutationData.name}</p>
-              <p className="text-xs">costo {mutationData.cost}</p>
+              <p className="text-xs">costo {convertNumber(mutationData.cost)}</p>
               <p className="text-xs">tienes {mutationData.amount}</p>
             </button>
           </div>
