@@ -3,15 +3,22 @@ import Buildings from "./Buildings"
 import Nav from "./Nav"
 import { useCounterStore } from "../store"
 import Mutation from "./Mutation"
+import { useEffect, useRef } from "react"
 
 export const Home = () => {
 
-  const { tab } = useCounterStore();
-  
+  const { tab, addCps } = useCounterStore();
+  const timeoutRef = useRef(null)
+
   const reset = () => {
     localStorage.clear()
     window.location.reload()
   }
+
+  useEffect(() => {
+    timeoutRef.current = setInterval(addCps, 1000)
+    return () => clearInterval(timeoutRef.current)
+  }, [])
 
   return (
     <div className="flex flex-row-reverse md:flex-row md:space-x-40 justify-center items-center h-screen bg-yellow-100">

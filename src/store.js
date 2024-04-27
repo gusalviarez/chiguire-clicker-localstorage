@@ -209,4 +209,4 @@ export const useCounterStore = create(persist((set) => (
     name: 'gameData',
     storage: createJSONStorage(() => localStorage),
   }
-));
+ ));

@@ -4,13 +4,14 @@ import useClickAnimation from "../hooks/useClickAnimation";
 import useCapyAnimation from "../hooks/useCapyAnimation";
 
 function Clicker() {
-  const { count, cps } = useCounterStore();
+  const { count, cps, addCounter } = useCounterStore();
   const { clickAnimation, styles, spanRef, number } = useClickAnimation();
   const { capyRef, capyAnimation } = useCapyAnimation();
 
   const handleClick = (event) => {
     capyAnimation()
     clickAnimation(event)
+    addCounter()
   }
 
   return (
