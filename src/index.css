@@ -47,6 +47,7 @@ img {
 
 .upward-animation {
   animation: move-up 2s ease; /* Animation name, duration, timing function */
+  pointer-events: none; /* Prevent user from interacting with the element */
 }
 
 @keyframes move-up {
