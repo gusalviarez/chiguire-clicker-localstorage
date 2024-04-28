@@ -44,3 +44,19 @@ img {
 #square-mutation-children:last-child {
   padding-bottom: 1rem;
 }
+
+.upward-animation {
+  animation: move-up 2s ease; /* Animation name, duration, timing function */
+}
+
+@keyframes move-up {
+  from {
+    transform: translateY(-100px); /* Start from current position */
+      opacity: 1; /* Start fully visible */
+  }
+  to {
+    transform: translateY(-300px); /* Move upwards by 100px */
+      opacity: 0; /* Fade out to transparent */
+
+  }
+}
