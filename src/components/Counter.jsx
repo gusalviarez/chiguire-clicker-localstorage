@@ -16,9 +16,9 @@ function Clicker() {
     span.classList.add("upward-animation")
     span.style.position = "absolute"
     span.style.top = `${event.clientY}px`
-    span.style.left = `${event.clientX + 15}px`
+    span.style.left = `${event.clientX}px`
     span.style.color = "white"
-    span.style.fontSize = "3rem"
+    span.style.fontSize = "1.6rem"
     divRef.current.appendChild(span)
     span.addEventListener('animationend', () => {
       span.parentNode.removeChild(span);

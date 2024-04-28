@@ -46,13 +46,13 @@ img {
 }
 
 .upward-animation {
-  animation: move-up 2s ease; /* Animation name, duration, timing function */
+  animation: move-up 3.5s ease; /* Animation name, duration, timing function */
   pointer-events: none; /* Prevent user from interacting with the element */
 }
 
 @keyframes move-up {
   from {
-    transform: translateY(-100px); /* Start from current position */
+    transform: translateY(-70px); /* Start from current position */
       opacity: 1; /* Start fully visible */
   }
   to {

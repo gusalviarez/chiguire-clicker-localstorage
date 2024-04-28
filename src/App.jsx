@@ -1,10 +1,16 @@
 import { Home } from "./components/Home"
 
+const handleContextMenu = (event) => {
+  event.preventDefault()
+}
+
 function App() {
 
   return (
     <>
-      <Home />
+      <div onContextMenu={handleContextMenu}>
+      <Home/>
+      </div>
     </>
   )
 }
