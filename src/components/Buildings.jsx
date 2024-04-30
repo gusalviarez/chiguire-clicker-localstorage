@@ -36,7 +36,7 @@ function Buildings() {
           <div key={buildingId} className="flex flex-row justify-center items-center md:w-80 md:mx-4 space-y-4 md:space-x-8 space-x-2">
             <img src={buildingId > 1 ? totalCount >= buildingData.cost ? images[buildingId] : images[0] : images[buildingId]}
   alt="un bebe chiguire" className="h-auto w-12 md:w-16" />
-            <div className="space-y-1 flex justify-center text-center items-center bg-red-300 flex-col items-center w-20 md:w-32">
+            <div className="space-y-1 flex justify-center text-center items-center flex-col items-center w-20 md:w-32">
               <span className="text-xs md:text-lg text-center">
                 {buildingId > 1 ? totalCount >= buildingData.cost ? buildingData.name : '???' : buildingData.name}
               </span>
