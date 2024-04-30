@@ -17,7 +17,7 @@ export const useCounterStore = create(persist((set) => (
 
     buildings: {
       1: {
-        name: 'zapato',
+        name: 'prueba 2',
         cost: 15,
         cps: 0.1,
         amount: 0,
@@ -214,7 +214,9 @@ export const useCounterStore = create(persist((set) => (
   }),
   {
     name: 'gameData',
-    version: 1, 
+    version: 2,
+    merge: (persistedState, currentState) =>
+      deepMerge(currentState, persistedState),
     storage: createJSONStorage(() => localStorage),
   }
 ));
