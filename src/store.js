@@ -8,6 +8,7 @@ export const useCounterStore = create(persist((set) => (
 
     // global
     count: 0,
+    totalCount: 0,
     click: 1,
     cps: 0,
     tab: 1,
@@ -16,61 +17,61 @@ export const useCounterStore = create(persist((set) => (
 
     buildings: {
       1: {
-        name: 'Baby Chiguire',
+        name: 'Bebe Chiguire',
         cost: 15,
         cps: 0.1,
         amount: 0,
       },
       2: {
-        name: 'Comida',
+        name: 'Lechuga',
         cost: 100,
         cps: 1,
         amount: 0,
       },
       3: {
-        name: 'Mutaciones',
+        name: 'Baño de espumas',
         cost: 1100,
         cps: 8,
         amount: 0,
       },
       4: {
-        name: 'edificio 4',
+        name: 'Meditación profunda',
         cost: 12000,
         cps: 47,
         amount: 0,
       },
       5: {
-        name: 'edificio 5',
+        name: 'Mutación genética',
         cost: 130000,
         cps: 260,
         amount: 0,
       },
       6: {
-        name: 'edificio 6',
+        name: 'Domar el fuego',
         cost: 1400000,
         cps: 1400,
         amount: 0,
       },
       7: {
-        name: 'edificio 7',
+        name: 'Educación basica',
         cost: 20000000,
         cps: 7800,
         amount: 0,
       },
       8: {
-        name: 'edificio 8',
+        name: 'Combate cercano',
         cost: 3300000000,
         cps: 44000,
         amount: 0,
       },
       9: {
-        name: 'edificio 9',
+        name: 'Pueblo',
         cost: 5100000000,
         cps: 260000,
         amount: 0,
       },
       10: {
-        name: 'edificio 10',
+        name: 'Ciudad',
         cost: 75000000000,
         cps: 1600000,
         amount: 0,
@@ -158,13 +159,13 @@ export const useCounterStore = create(persist((set) => (
               mutations: updatedMutations,
             };
           } else if (mutationId == 2) {
-                return {
-                  // 30% extra cps
-                  cps: state.cps * 1.3,
-                  percentalBoost: state.percentalBoost + 0.3,
-                  count: state.count - mutation.cost, // Deduct current cost
-                  mutations: updatedMutations,
-                };
+            return {
+              // 30% extra cps
+              cps: state.cps * 1.3,
+              percentalBoost: state.percentalBoost + 0.3,
+              count: state.count - mutation.cost, // Deduct current cost
+              mutations: updatedMutations,
+            };
           } else if (mutationId == 3) {
             return {
               // click x100
@@ -173,14 +174,14 @@ export const useCounterStore = create(persist((set) => (
               mutations: updatedMutations,
             };
           } else if (mutationId == 4) {
-              // tus clicks ahora escalan un 5% de tu cps
+            // tus clicks ahora escalan un 5% de tu cps
             return {
               clickBoost: state.clickBoost + 0.05,
               count: state.count - mutation.cost, // Deduct current cost
               mutations: updatedMutations,
             };
           } else if (mutationId == 5) {
-              // click x1000
+            // click x1000
             return {
               click: state.click * 1000,
               count: state.count - mutation.cost, // Deduct current cost
@@ -198,9 +199,15 @@ export const useCounterStore = create(persist((set) => (
 
     addCps: () => set((state) => ({
       count: state.count + state.cps,
+      totalCount: state.totalCount + state.cps
     })),
 
-    addCounter: () => set((state) => ({ count: state.count + state.click + (state.cps * state.clickBoost)})),
+
+
+    addCounter: () => set((state) => ({
+      count: state.count + state.click + (state.cps * state.clickBoost),
+      totalCount: state.totalCount + state.click + (state.cps * state.clickBoost)
+    })),
 
     changeWindow: (number) => set((state) => ({ tab: number }))
     ////
@@ -209,4 +216,4 @@ export const useCounterStore = create(persist((set) => (
     name: 'gameData',
     storage: createJSONStorage(() => localStorage),
   }
- ));
+));

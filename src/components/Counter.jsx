@@ -1,7 +1,7 @@
 import { useCounterStore } from '../store';
 import capy from "/capybara-svgrepo-com.svg"
 import useCapyAnimation from "../hooks/useCapyAnimation";
-import { useState, useEffect, useRef } from 'react';
+import { useRef } from 'react';
 function Clicker() {
   const { count, cps, addCounter, click } = useCounterStore();
   const { capyRef, capyAnimation } = useCapyAnimation();
@@ -43,7 +43,7 @@ function Clicker() {
         <span className="text-xl md:text-6xl">Chiguires</span>
         <span className="text-xl md:text-6xl">{convertNumber(Math.floor(count))}</span>
       </div>
-      <p className="text-xl md:text-3xl">{Number.isInteger(cps) ? <span>{cps}</span> : <span>{cps.toFixed(1)}</span>}
+      <p className="text-xl md:text-3xl">{Number.isInteger(cps) ? <span>{convertNumber(cps)}</span> : <span>{convertNumber(cps.toFixed(1))}</span>}
         <span> cps</span>
       </p>
       <img ref={capyRef} src={capy} className="h-auto w-[9rem] md:w-96" onClick={handleClick} />
