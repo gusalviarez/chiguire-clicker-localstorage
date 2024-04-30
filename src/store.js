@@ -214,9 +214,9 @@ export const useCounterStore = create(persist((set) => (
   }),
   {
     name: 'gameData',
-    version: 3,
+    version: 4,
     migrate: (persistedState, version) => {
-      if (version !== 3) {
+      if (version === 3) {
         // if the stored value is in version 0, we rename the field to the new name
         persistedState.newField = persistedState.oldField
         delete persistedState.oldField
