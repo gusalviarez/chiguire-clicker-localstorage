@@ -17,7 +17,7 @@ export const useCounterStore = create(persist((set) => (
 
     buildings: {
       1: {
-        name: 'Bebe Chiguire',
+        name: 'zapato',
         cost: 15,
         cps: 0.1,
         amount: 0,
@@ -214,6 +214,7 @@ export const useCounterStore = create(persist((set) => (
   }),
   {
     name: 'gameData',
+    version: 1, 
     storage: createJSONStorage(() => localStorage),
   }
 ));
