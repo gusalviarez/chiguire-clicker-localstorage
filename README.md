@@ -1,8 +1,8 @@
-# React + Vite
+# Chiguire clicker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The chiguires will conquer the world, at all cost
 
-Currently, two official plugins are available:
+In this clicker game you can guide the cute chiguires to the get the interstellar
+supremacy
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Uploading image.png…]()
